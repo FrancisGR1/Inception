@@ -22,6 +22,9 @@ To build and run the projects type: "make"
 
 # Resources
 Install: https://docs.docker.com/engine/install/
+
 Intro: //www.youtube.com/watch?v=RqTEHSBrYFw 
+
 Docs: https://docs.docker.com/get-started/introduction/?utm_source=chatgpt.com
+
 AI: used for nginx configuration and some debugging in the docker compose yaml.

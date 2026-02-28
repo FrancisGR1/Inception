@@ -10,3 +10,5 @@
     - [x] volumes geridos em vez de binded
     - [x] verificar se dados persistem
 - [x] fazer readme
+
+    hello from PC!
