@@ -1,5 +1,5 @@
 DEBUG_BUILD = --verbose
-ENV_VARS=${HOME}/secrets/.env
+ENV_VARS=$(HOME)/secrets/.env
 DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml --env-file $(ENV_VARS)
 
 NGINX_FILES = \
@@ -13,7 +13,7 @@ WORDPRESS_FILES = \
 	    srcs/wordpress/Dockerfile \
 	    srcs/wordpress/init-wp-content.sh
 
-.PHONY: all mariadb wordpress build clean fclean vclean re debug
+.PHONY: all mariadb wordpress build clean fclean re debug
 
 all: nginx mariadb wordpress
 	$(DOCKER_COMPOSE) up -d
@@ -38,9 +38,6 @@ clean:
 
 fclean: clean
 	$(DOCKER_COMPOSE) down --rmi local
-
-vclean: clean # remove volumes
-	$(DOCKER_COMPOSE) down -v --rmi local
 
 re: fclean nocache all
 
