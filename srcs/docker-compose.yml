@@ -21,10 +21,13 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_password
+    secrets:
+      - mysql_root_password
+      - mysql_password
     restart: always
     networks:
       - inception-network
@@ -39,7 +42,7 @@ services:
       - wordpress_data:/var/www/wordpress
     environment:
       DB_HOST: mariadb
-      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_PASSWORD_FILE: /run/secrets/mysql_password
       DB_NAME: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}
       WORDPRESS_SITE_URL: ${WORDPRESS_SITE_URL}
@@ -64,3 +67,8 @@ volumes:
       type: none
       o: bind
       device: /home/frmiguel/data/wordpress
+secrets:
+  mysql_password:
+    file: ${SECRETS_PATH}/mysql_password.txt
+  mysql_root_password:
+    file: ${SECRETS_PATH}/mysql_root_password.txt

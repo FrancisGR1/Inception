@@ -37,14 +37,22 @@ docker
 "make"
 
 # Commands
+
 ## Docker
+### watch
 docker ps
 docker logs <container_name>
 docker inspect <container|volume|image>
+docker network ls
+docker inspect <network name>
 docker volume ls
 docker images
+docker secrets ls
+### enter
 docker exec -it <container_name> sh
+### remove
 docker rm -f $(docker ps -q)
+
 ## Mariadb
 docker exec -it mariadb mariadb -u root -p
 show databases;

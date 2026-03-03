@@ -1,5 +1,6 @@
-SECRETS = ../secrets/.env
-DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml --env-file $(SECRETS)
+DEBUG_BUILD = --verbose
+ENV_VARS=${HOME}/secrets/.env
+DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml --env-file $(ENV_VARS)
 
 NGINX_FILES = \
 	    srcs/nginx/Dockerfile \

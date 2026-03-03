@@ -8,6 +8,7 @@ Overall it's a technology that decouples software from it's dependencies, namely
 ### VM vs Docker
 However, unlike a VM, Docker interacts directly with the host operating system, which means that virtualization is achieved in a less resource-intensive way. For instance, running three VMs requires three separate operating systems. With Docker, three containers can run on the same host OS kernel, dramatically reducing memory usage and startup time.
 ### Secret
+Secrets are variables managed by docker privately, that is, they don't show up on the logs and are only acessible by the designated container(s).
 ### Network
 Another aspect of docker is its network. Multiple containers can communicate with each other with minimal configuration. This makes microservice architectures and decentralized systems very convenient. Unlike traditional hosting environments, the granular details of setting up ports, permissions, and networking are abstracted away.
 ### Data Persistence
