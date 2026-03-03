@@ -38,4 +38,6 @@ RUN chmod +x /init-wp-content.sh
 
 ENTRYPOINT [ "/init-wp-content.sh" ]
 
+EXPOSE 9000
+
 CMD [ "/usr/sbin/php-fpm84" , "-F" ] 
