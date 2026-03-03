@@ -1,4 +1,4 @@
-SECRETS = secrets/.env
+SECRETS = ../secrets/.env
 DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml --env-file $(SECRETS)
 
 NGINX_FILES = \
