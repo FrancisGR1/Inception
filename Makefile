@@ -1,3 +1,5 @@
+DATA=$(HOME)/data/
+BACKUP=$(HOME)/backup/
 DEBUG_BUILD = --verbose
 ENV_VARS=$(HOME)/secrets/.env
 DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml --env-file $(ENV_VARS)
@@ -41,18 +43,24 @@ fclean: clean
 
 re: fclean nocache all
 
+backup:
+	# needs sudo!
+	mkdir -p $(DATA)
+	mkdir -p $(BACKUP)
+	sudo rsync -avr $(DATA) $(BACKUP)
+
 debug:
 	@watch -n 1 '\
-	clear; \
-	echo "==================== DOCKER PS ===================="; \
-	docker ps; \
-	echo; \
-	echo "==================== NGINX LOGS ===================="; \
-	docker logs --tail=20 nginx; \
-	echo; \
-	echo "================== WORDPRESS LOGS =================="; \
-	docker logs --tail=20 wordpress; \
-	echo; \
-	echo "=================== MARIADB LOGS ==================="; \
-	docker logs --tail=20 mariadb; \
-	'
+		clear; \
+		echo "==================== DOCKER PS ===================="; \
+		docker ps; \
+		echo; \
+		echo "==================== NGINX LOGS ===================="; \
+		docker logs --tail=20 nginx; \
+		echo; \
+		echo "================== WORDPRESS LOGS =================="; \
+		docker logs --tail=20 wordpress; \
+		echo; \
+		echo "=================== MARIADB LOGS ==================="; \
+		docker logs --tail=20 mariadb; \
+		'
