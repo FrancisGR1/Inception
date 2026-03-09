@@ -7,5 +7,6 @@
     - [x] tornar as credenciais privadas
     - [x] secrets in readme
     - [x] secrets
-    - [ ] volumes geridos em vez de binded
+    - [x] volumes geridos em vez de binded
+    - [x] verificar se dados persistem
 - [x] fazer readme
