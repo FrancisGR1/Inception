@@ -12,3 +12,4 @@
 - [x] fazer readme
 
     hello from PC!
+    hello from SCHOOL!
