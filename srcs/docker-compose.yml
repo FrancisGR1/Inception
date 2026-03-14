@@ -1,5 +1,4 @@
 services:
-
   nginx:
     container_name: nginx
     depends_on:
@@ -47,6 +46,8 @@ services:
       WORDPRESS_DB_PASSWORD_FILE: /run/secrets/mysql_password
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_SITE_URL: ${WORDPRESS_SITE_URL}
+    secrets:
+      - mysql_password
     restart: always
     networks:
       - inception-network
@@ -57,7 +58,17 @@ networks:
 
 volumes:
   mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOME}/data/mariadb
   wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOME}/data/wordpress
 
 secrets:
   mysql_password:

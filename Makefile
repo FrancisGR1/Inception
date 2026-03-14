@@ -18,6 +18,8 @@ WORDPRESS_FILES = \
 .PHONY: all mariadb wordpress build clean fclean re debug
 
 all: nginx mariadb wordpress
+	mkdir -p $(DATA)/mariadb
+	mkdir -p $(DATA)/wordpress
 	$(DOCKER_COMPOSE) up -d
 
 nginx: $(NGINX_FILES)
@@ -40,6 +42,9 @@ clean:
 
 fclean: clean
 	$(DOCKER_COMPOSE) down --rmi local
+
+vclean:
+	$(DOCKER_COMPOSE) down -v
 
 re: fclean nocache all
 
