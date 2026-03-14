@@ -43,8 +43,10 @@ fclean: clean
 
 re: fclean nocache all
 
-backup:
-	# needs sudo!
+logs:
+	$(DOCKER_COMPOSE) logs
+
+backup: # user needs to be in sudo group
 	mkdir -p $(DATA)
 	mkdir -p $(BACKUP)
 	sudo rsync -avr $(DATA) $(BACKUP)
